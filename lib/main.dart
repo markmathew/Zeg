@@ -5,10 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:zeg/view/screens/account_screen.dart';
 import 'package:zeg/view/screens/add_card_screen.dart';
 import 'package:zeg/view/screens/be_lender_screen.dart';
+import 'package:zeg/view/screens/contact_us_screen.dart';
 import 'package:zeg/view/screens/dashboard_screen.dart';
 import 'package:zeg/view/screens/edit_profile_screen.dart';
 import 'package:zeg/view/screens/email_confirmation_screen.dart';
+import 'package:zeg/view/screens/faqs_screen.dart';
 import 'package:zeg/view/screens/forgot_password_screen.dart';
+import 'package:zeg/view/screens/loan_history_screen.dart';
 import 'package:zeg/view/screens/login_signup_screen.dart';
 import 'package:zeg/view/screens/payment_method_screen.dart';
 import 'package:zeg/view/screens/profile_management_screen.dart';
@@ -54,7 +57,10 @@ class ZegApp extends StatelessWidget {
             GetPage(name: '/editProfileScreen', page: ()=> const EditProfileScreen()),
             GetPage(name: '/paymentMethod', page: ()=> const PaymentMethodScreen()),
             GetPage(name: '/addCardScreen', page: ()=> const AddCardScreen()),
-            GetPage(name: '/beLenderScreen', page: ()=> BeLenderScreen())
+            GetPage(name: '/beLenderScreen', page: ()=> BeLenderScreen()),
+            GetPage(name: '/loanHistoryScreen', page: ()=> const LoanHistoryScreen()),
+            GetPage(name: '/faqsScreen', page: ()=> const FaqsScreen()),
+            GetPage(name: '/contactUs', page: ()=> ContactUsScreen())
 
           ],
         );

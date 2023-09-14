@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zeg/common/colors.dart';
 
 class DrawerComponent extends StatelessWidget {
@@ -37,40 +38,55 @@ class DrawerComponent extends StatelessWidget {
             margin: EdgeInsets.only(left: 15.w),
             child: Column(
               children: [
-                Row(
+                InkWell(
+                  onTap: (){
+                    Get.toNamed('/loanHistoryScreen');
+                  },
+                  child: Row(
+                      children: [
+                        const Icon(Icons.history, color: ColorsConstant.grey,),
+                        SizedBox(width: 8.w,),
+                        Text('Loan history', style: TextStyle(
+                            fontSize: 16.sp,
+                            color: ColorsConstant.grey,
+                            fontWeight: FontWeight.w600
+                        ),)
+                      ],
+                    ),
+                ),
+                SizedBox(height: 18.h,),
+                InkWell(
+                  onTap: (){
+                    Get.toNamed('/faqsScreen');
+                  },
+                  child: Row(
                     children: [
-                      const Icon(Icons.history, color: ColorsConstant.grey,),
+                      const Icon(Icons.question_answer_outlined, color: ColorsConstant.grey,),
                       SizedBox(width: 8.w,),
-                      Text('Loan history', style: TextStyle(
+                      Text('FAQs', style: TextStyle(
                           fontSize: 16.sp,
                           color: ColorsConstant.grey,
                           fontWeight: FontWeight.w600
                       ),)
                     ],
                   ),
-                SizedBox(height: 18.h,),
-                Row(
-                  children: [
-                    const Icon(Icons.question_answer_outlined, color: ColorsConstant.grey,),
-                    SizedBox(width: 8.w,),
-                    Text('FAQs', style: TextStyle(
-                        fontSize: 16.sp,
-                        color: ColorsConstant.grey,
-                        fontWeight: FontWeight.w600
-                    ),)
-                  ],
                 ),
                 SizedBox(height: 18.h,),
-                Row(
-                  children: [
-                    const Icon(Icons.quick_contacts_mail_outlined, color: ColorsConstant.grey,),
-                    SizedBox(width: 8.w,),
-                    Text('Contact us', style: TextStyle(
-                        fontSize: 16.sp,
-                        color: ColorsConstant.grey,
-                        fontWeight: FontWeight.w600
-                    ),)
-                  ],
+                InkWell(
+                  onTap: (){
+                    Get.toNamed('/contactUs');
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.quick_contacts_mail_outlined, color: ColorsConstant.grey,),
+                      SizedBox(width: 8.w,),
+                      Text('Contact us', style: TextStyle(
+                          fontSize: 16.sp,
+                          color: ColorsConstant.grey,
+                          fontWeight: FontWeight.w600
+                      ),)
+                    ],
+                  ),
                 ),
                 SizedBox(height: 18.h,),
                 Row(

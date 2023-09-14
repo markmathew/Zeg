@@ -102,7 +102,7 @@ class BeLenderScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.remove_circle_outline,color: ColorsConstant.white,),
+                    icon: const Icon(Icons.remove_circle_outline,color: ColorsConstant.white,),
                     onPressed: () {
                       // Subtract logic
                       int currentValue = int.parse(interestRateController.text);
@@ -178,7 +178,7 @@ class BeLenderScreen extends StatelessWidget {
             //const WhiteBtnComponent(btnTitle: 'SAVE')
             WhiteBtnComponent(btnTitle: 'SAVE', onPressed: (){
               PopUpComponent.showPopUp(context, 'CONGRATS\nYou are lender too now');
-              Future.delayed(Duration(seconds: 3), (){
+              Future.delayed(const Duration(seconds: 3), (){
                 Get.offNamed('/accountScreen');
               });
             })
