@@ -40,18 +40,23 @@ class EmailConfirmationScreen extends StatelessWidget {
               ),
             ),
 
-            TextFieldComponent(
-              _otpController,
-              keyboardType: TextInputType.emailAddress,
-              currentFocus: _otpFocus,
-              hintText: "Enter your mail",
-              //validator: validateEmail,
-              onChanged: (val){
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 31.w),
+              child: TextFieldComponent(
+                _otpController,
+                keyboardType: TextInputType.emailAddress,
+                currentFocus: _otpFocus,
+                hintText: "Enter your mail",
+                hintTextStyle: const TextStyle(color: ColorsConstant.hintTextColor),
+                borderColor: ColorsConstant.black.withOpacity(0.3),
+                //validator: validateEmail,
+                onChanged: (val){
 
-              },
+                },
+              ),
             ),
 
-            SizedBox(height: 18.h),
+            SizedBox(height: 27.h),
 
             ButtonComponent(text: ('CONFIRM'), onPressed: (){
               _checkPin(_pin);

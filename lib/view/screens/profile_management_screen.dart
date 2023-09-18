@@ -7,7 +7,13 @@ import 'package:zeg/view/components/drawer_component.dart';
 import 'package:zeg/view/components/editfield_component.dart';
 
 class ProfileManagementScreen extends StatelessWidget {
-  const ProfileManagementScreen({super.key});
+  ProfileManagementScreen({super.key});
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _contactController = TextEditingController();
+  final _addressController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,16 +84,24 @@ class ProfileManagementScreen extends StatelessWidget {
               ),
             ),
             EditFieldComponent(
+              status: false,
               fieldTitle: 'My Name',
+              controller: _nameController,
             ),
             EditFieldComponent(
+              status: false,
               fieldTitle: 'Email',
+              controller: _emailController,
             ),
             EditFieldComponent(
+              status: false,
               fieldTitle: 'Contact Number',
+              controller: _contactController,
             ),
             EditFieldComponent(
+              status: false,
               fieldTitle: 'Address',
+              controller: _addressController,
             ),
            ],
         ),

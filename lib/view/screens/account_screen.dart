@@ -131,7 +131,7 @@ class AccountScreen extends StatelessWidget {
 
 
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 28.h),
+                      margin: EdgeInsets.symmetric(vertical: 32.h),
                       height: MediaQuery.of(context).size.height*0.3,
                       width: MediaQuery.of(context).size.width*1,
                       decoration: BoxDecoration(

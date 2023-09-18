@@ -4,7 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../common/colors.dart';
 
 class AmountBalanceComponent extends StatelessWidget {
-  const AmountBalanceComponent({super.key});
+  const AmountBalanceComponent({
+    super.key,
+    required this.balance
+  });
+
+  final double balance;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class AmountBalanceComponent extends StatelessWidget {
             fontSize: 30.sp
         ),),
         SizedBox(width: 12.w,),
-        Text('8656.80', style: TextStyle(
+        Text('$balance', style: TextStyle(
           color: ColorsConstant.white,
           fontSize: 48.sp,
         ),)

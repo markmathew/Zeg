@@ -38,46 +38,55 @@ class ResetPasswordScreen extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
-                  TextFieldComponent(
-                    _passwordController,
-                    currentFocus: _passwordFocus,
-                    nextFocus: _repasswordFocus,
-                    keyboardType: TextInputType.text,
-                    isPassword: true,
-                    //validator: validatePassword,
-                    hintText: "Password",
-                    hintTextStyle: TextStyle(
-                      color: ColorsConstant.grey,
-                      fontSize: 14.sp,
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 31.w),
+                    child: TextFieldComponent(
+                      _passwordController,
+                      currentFocus: _passwordFocus,
+                      nextFocus: _repasswordFocus,
+                      keyboardType: TextInputType.text,
+                      isPassword: true,
+                      borderColor: ColorsConstant.black.withOpacity(0.3),
+                      //validator: validatePassword,
+                      hintText: "Password",
+                      hintTextStyle: TextStyle(
+                        color: ColorsConstant.hintTextColor,
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 27.h,
                   ),
-                  TextFieldComponent(
-                    _repasswordController,
-                    currentFocus: _repasswordFocus,
-                    keyboardType: TextInputType.text,
-                    isPassword: true,
-                    // validator: (value) {
-                    //   if (_passwordController.value ==
-                    //       _repasswordController.value) {
-                    //     return null;
-                    //   } else {
-                    //     return "Password does not match";
-                    //   }
-                    // },
-                    hintText: "Re-enter Password",
-                    hintTextStyle: TextStyle(
-                      color: ColorsConstant.grey,
-                      fontSize: 14.sp,
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 31.w),
+                    child: TextFieldComponent(
+                      _repasswordController,
+                      currentFocus: _repasswordFocus,
+                      keyboardType: TextInputType.text,
+                      isPassword: true,
+                      borderColor: ColorsConstant.black.withOpacity(0.3),
+
+                      // validator: (value) {
+                      //   if (_passwordController.value ==
+                      //       _repasswordController.value) {
+                      //     return null;
+                      //   } else {
+                      //     return "Password does not match";
+                      //   }
+                      // },
+                      hintText: "Re-enter Password",
+                      hintTextStyle: TextStyle(
+                        color: ColorsConstant.hintTextColor,
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: 18.h),
+            SizedBox(height: 27.h),
             
             ButtonComponent(text: 'DONE', onPressed: (){
               if(_formKey.currentState!.validate()){

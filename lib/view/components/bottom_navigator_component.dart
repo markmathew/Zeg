@@ -40,7 +40,7 @@ class _BottomNavigatorBarComponentState extends State<BottomNavigatorBarComponen
       onTap: _onTap,
       currentIndex: selectedIndex,
         //type: BottomNavigationBarType.shifting,
-        selectedItemColor: ColorsConstant.neonGreen,
+        selectedItemColor: ColorsConstant.lightGreen,
         items:const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: 'Wallet',

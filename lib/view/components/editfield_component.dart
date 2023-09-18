@@ -8,11 +8,17 @@ class EditFieldComponent extends StatelessWidget {
    EditFieldComponent({
     super.key,
     required this.fieldTitle,
+    required this.status,
+     this.currentFocus,
+     this.nextFocus,
+     required this.controller
   });
 
   final String fieldTitle;
-
-  final myController = TextEditingController();
+  final FocusNode? currentFocus;
+  final FocusNode? nextFocus;
+  bool status;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +36,12 @@ class EditFieldComponent extends StatelessWidget {
             fontSize: 12.sp
           ),),
            TextFormField(
-             //enabled: false,
-             controller: myController,
+             enabled: status,
+             controller: controller,
             cursorColor: ColorsConstant.white,
             style: const TextStyle(color: ColorsConstant.white),
             decoration: InputDecoration(
-              hintText: myController.text,
+              hintText: controller.text,
             hintStyle: const TextStyle(color: ColorsConstant.white),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: ColorsConstant.white),
@@ -43,6 +49,9 @@ class EditFieldComponent extends StatelessWidget {
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: ColorsConstant.white),
               ),
+              disabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: ColorsConstant.white)
+              )
             ),
           )
         ],

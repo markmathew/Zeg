@@ -18,27 +18,50 @@ class FaqsScreen extends StatelessWidget {
       appBar: const AppBarComponent(pageTitle: 'FAQs',),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 30.h),
+
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
-              const FaqsComponent(),
-              SizedBox(height: 24.h,),
+              const FaqsComponent(
+                question: 'Question 1',
+                answer: "Answer 1",
+              ),
+              SizedBox(height: 50.h,),
+              const FaqsComponent(
+                question: 'Question 2',
+                answer: "Answer 2",
+              ),
+              SizedBox(height: 50.h,),
+              const FaqsComponent(
+                question: 'Question 3',
+                answer: "Answer 3",
+              ),
+              SizedBox(height: 50.h,),
+              const FaqsComponent(
+                question: 'Question 4',
+                answer: "Answer 4",
+              ),
+              SizedBox(height: 50.h,),
+              const FaqsComponent(
+                question: 'Question 5',
+                answer: "Answer 5",
+              ),
+              SizedBox(height: 50.h,)
             ],
           ),
         ),
-      ),
+
+
+
+
+        // child: ListView.builder(itemBuilder: (BuildContext context, index){
+        //   return const Padding(
+        //     padding: EdgeInsets.only(bottom: 50.0),
+        //     child: FaqsComponent(),
+        //   );
+        // },
+        //   itemCount: 5,)
+        ),
       bottomNavigationBar: const BottomNavigatorBarComponent(),
     );
   }

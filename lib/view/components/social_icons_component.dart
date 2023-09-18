@@ -17,38 +17,38 @@ class SocialIconsComponent extends StatelessWidget {
           width: 60.w,
           decoration: BoxDecoration(
               border: Border.all(width: 1,color: ColorsConstant.grey),
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(10.r)
           ),
           child: Center(
-            child: Image.asset('assets/vectors/appleIcon.png'),
+            child: Image.asset('assets/vectors/appleIcon.png',height: 34, width: 27,),
           ),
         ),
         SizedBox(
-          width: 22.w,
+          width: 41.w,
         ),
         Container(
           height: 60.h,
           width: 60.w,
           decoration: BoxDecoration(
               border: Border.all(width: 1, color: ColorsConstant.grey),
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(10.r)
           ),
           child: Center(
-            child: Image.asset('assets/vectors/facebookIcon.png'),
+            child: Image.asset('assets/vectors/facebookIcon.png',height: 34, width: 27,),
           ),
         ),
         SizedBox(
-          width: 22.w,
+          width: 41.w,
         ),
         Container(
           height: 60.h,
           width: 60.w,
           decoration: BoxDecoration(
               border: Border.all(width: 1, color: ColorsConstant.grey),
-              borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(10.r)
           ),
           child: Center(
-            child: Image.asset('assets/vectors/googleIcon.png'),
+            child: Image.asset('assets/vectors/googleIcon.png',height: 34, width: 27,),
           ),
         )
       ],

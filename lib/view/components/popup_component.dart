@@ -4,18 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../common/colors.dart';
 
 class PopUpComponent extends StatelessWidget {
-  const PopUpComponent({super.key, required this.myTitle});
+  const PopUpComponent({super.key, required this.myTitle, required this.subTitle});
 
   final String myTitle;
+  final String subTitle;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: showPopUp(context, myTitle),
+      child: showPopUp(context, myTitle, subTitle),
     );
   }
 
-  static showPopUp(BuildContext context, String myTitle){
+  static showPopUp(BuildContext context, String myTitle, String subTitle){
     return showDialog(context: context, builder: (BuildContext context){
       return AlertDialog(
         backgroundColor: Colors.transparent,
@@ -38,13 +39,27 @@ class PopUpComponent extends StatelessWidget {
               )
           ),
           child: Center(
-            child: Text(myTitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 32.sp,
-                  color: ColorsConstant.white,
-                  fontWeight: FontWeight.w700
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(myTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 26.sp,
+                      color: ColorsConstant.white,
+                      fontWeight: FontWeight.w700
+                  ),
+                ),
+                SizedBox(height: 10.h,),
+                Text(subTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: ColorsConstant.white,
+                      fontWeight: FontWeight.w600
+                  ),
+                ),
+              ],
             ),
           ),
         ),

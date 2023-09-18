@@ -60,7 +60,9 @@ class DashBoardScreen extends StatelessWidget {
                     color: ColorsConstant.white.withOpacity(0.7)
                   ),),
                   SizedBox(height: 15.h,),
-                  const AmountBalanceComponent(),
+                  const AmountBalanceComponent(
+                    balance: 8656.86,
+                  ),
                   SizedBox(height: 20.h,),
                   const DashBoardMainOptionsComponent(),
                   SizedBox(height: 20.h,),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zeg/common/colors.dart';
 import 'package:zeg/view/components/button_component.dart';
 import 'package:zeg/view/components/textfield_component.dart';
 import 'package:zeg/view/components/top_blackcontainer_component.dart';
@@ -29,12 +30,14 @@ class ForgotPassword extends StatelessWidget {
             ),
 
             Container(
-              margin: EdgeInsets.only(bottom: 25.h),
+              margin: EdgeInsets.only(bottom: 27.h, left: 31.w, right: 31.w),
               child: TextFieldComponent(
                 _emailController,
                 keyboardType: TextInputType.emailAddress,
                 currentFocus: _emailFocus,
                 hintText: "Enter your mail",
+                hintTextStyle: const TextStyle(color: ColorsConstant.hintTextColor),
+                borderColor: ColorsConstant.black.withOpacity(0.3),
                 //validator: validateEmail,
               ),
             ),

@@ -19,19 +19,19 @@ class IconOptionsComponent extends StatelessWidget {
     return Row(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 12.w),
+          margin: EdgeInsets.symmetric(horizontal: 15.w),
           height: 35.h,
           width: 35.w,
           decoration: BoxDecoration(
             color: ColorsConstant.black.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12)
+            borderRadius: BorderRadius.circular(10.r)
           ),
           child: Center(child: Icon(myIcon.icon, color: ColorsConstant.white, size: 25,)),
         ),
-        SizedBox(width: 16.w,),
+        SizedBox(width: 25.w,),
         Text(optionText, style: TextStyle(
             color: ColorsConstant.white,
-            fontSize: 14.sp
+            fontSize: 16.sp
         ),)
       ],
     );

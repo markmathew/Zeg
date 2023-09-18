@@ -40,7 +40,9 @@ class PaymentMethodScreen extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height*0.15,),
               Align(
                 alignment: Alignment.bottomCenter,
-                  child: WhiteBtnComponent(btnTitle: 'ADD NEW', onPressed: (){
+                  child: WhiteBtnComponent(
+                    btnRadius: 12.r,
+                    btnTitle: 'ADD NEW', onPressed: (){
                     Get.toNamed('/addCardScreen');
                   },)
                   )

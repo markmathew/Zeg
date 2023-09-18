@@ -7,8 +7,10 @@ import 'package:zeg/view/components/swipeup_component.dart';
 class SwipeUp extends StatelessWidget {
   const SwipeUp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    int screen;
     return Scaffold(
       backgroundColor: ColorsConstant.black,
 
@@ -30,22 +32,25 @@ class SwipeUp extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,),
 
-                const SwipeUpComponent(),
+                Container(
+                    margin: const EdgeInsets.symmetric(vertical: 112),
+                    child: const SwipeUpComponent()),
 
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 18.0.h, right: 12.0.w),
-                      child: InkWell(
+                      child: InkWell
+                        (
                         onTap: (){
-                          Get.toNamed('/signUp');
+                          Get.toNamed('/loginScreen', arguments: 1);
                         },
                         child: const Text('SIGN UP', style: TextStyle(
-                          color: ColorsConstant.white,
-                          decoration: TextDecoration.underline
+                            color: ColorsConstant.white,
+                            decoration: TextDecoration.underline
                         ),),
-                      ),
+                      )
                     ),
                   ),
                 )

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zeg/common/colors.dart';
@@ -29,7 +31,7 @@ class ContactUsScreen extends StatelessWidget {
       drawer: const DrawerComponent(),
       appBar: const AppBarComponent(pageTitle: 'Contact Us'),
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.w),
+        margin: EdgeInsets.symmetric(horizontal: 30.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,20 +63,27 @@ class ContactUsScreen extends StatelessWidget {
                 fillColor: ColorsConstant.black,
               ),
               SizedBox(height: 14.h,),
-              Text('Email', style: TextStyle(
+              Text('Message', style: TextStyle(
                 color: ColorsConstant.white,
                 fontSize: 12.sp,
               ),),
               Form(
                 child: TextFieldComponent(
                   messageController,
+                  maxLength: 180,
                   maxLines: 5,
+                  isSmall: true,
                   currentFocus: messageFocus,
                   fillColor: ColorsConstant.black,
                 ),
               ),
-              SizedBox(height: 14.h,),
-              Center(child: WhiteBtnComponent(btnTitle: 'SEND', onPressed: (){}))
+              SizedBox(height: 48.h,),
+              WhiteBtnComponent(
+                  btnRadius: 10.r,
+                  btnTitle: 'SEND',
+                  onPressed: (){
+
+                  })
 
             ],
           ),

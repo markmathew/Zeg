@@ -19,18 +19,29 @@ class SwipeUpComponent extends StatelessWidget {
     return GestureDetector(
       onVerticalDragDown: _handleVerticalDragDown,
       child: Container(
-          margin: EdgeInsets.only(top: 40.h),
           height: MediaQuery.of(context).size.height*0.15,
           width: MediaQuery.of(context).size.width*0.6,
           decoration: BoxDecoration(
-              color: ColorsConstant.grey,
-              borderRadius: BorderRadius.circular(20)
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                stops: const [
+                  0.1,
+                  0.9
+                ],
+                colors:[
+                  ColorsConstant.white.withOpacity(0.33),
+                  ColorsConstant.white.withOpacity(0.25)
+                ]
+                
+              ),
+              borderRadius: BorderRadius.circular(10.r)
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.arrow_circle_up, color: ColorsConstant.white,size: 35.h,),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 25.h,),
               const Text('SWIPE UP TO LOGIN', style: TextStyle(
                   color: ColorsConstant.white
               ),)

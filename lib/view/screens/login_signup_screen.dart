@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zeg/common/colors.dart';
 import 'package:zeg/view/components/button_component.dart';
@@ -11,28 +10,36 @@ import '../../utils/utils.dart';
 import '../components/textfield_component.dart';
 
 class LoginScreen extends StatelessWidget {
- // const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   final _formKey = GlobalKey<FormState>();
 
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _signInEmailController = TextEditingController();
+
+  final _signUpEmailController = TextEditingController();
+
+  final _signInPasswordController = TextEditingController();
+
   final FocusNode _emailFocus = FocusNode();
-  final FocusNode _passwordFocus = FocusNode();
 
-  //final _formKey = GlobalKey<FormState>();
-
+  final FocusNode _signInPasswordFocus = FocusNode();
+  final _signUpPasswordController = TextEditingController();
+  final FocusNode _signUpPasswordFocus = FocusNode();
   final _nameController = TextEditingController();
-  final _preferredNameController = TextEditingController();
-  //final _emailController = TextEditingController();
-  //final _passwordController = TextEditingController();
-  final _repasswordController = TextEditingController();
 
+  final _repasswordController = TextEditingController();
   final FocusNode _nameFocus = FocusNode();
   final FocusNode _preferredNameFocus = FocusNode();
-  //final FocusNode _emailFocus = FocusNode();
-  //final FocusNode _passwordFocus = FocusNode();
   final FocusNode _repasswordFocus = FocusNode();
+
+  final index = Get.arguments;
+
+  TabController? tabController;
+
+  void switchToTab(){
+    tabController?.animateTo(1);
+  }
+
 
 
   @override
@@ -41,7 +48,7 @@ class LoginScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height*0.2,
+            height: MediaQuery.of(context).size.height*0.25,
             color: ColorsConstant.black,
             child: Center(
               child: Column(
@@ -67,261 +74,272 @@ class LoginScreen extends StatelessWidget {
           ),
           Expanded(
               child: DefaultTabController(
+                initialIndex: index?? 0,
                 length: 2,
-                child: Scaffold(
-                  appBar: AppBar(
-                    automaticallyImplyLeading: false,
-                    elevation: 0.0,
-                    backgroundColor: ColorsConstant.black,
-                    bottom: const PreferredSize(
-                      preferredSize: Size.fromHeight(10),
-                      child: TabBar(
-                        indicatorWeight: 2,
-                        indicatorColor: ColorsConstant.white,
-                        tabs: [
-                          Tab(icon: Text('LOG IN')),
-                          Tab(icon: Text('SIGN UP')),
-                        ],
+                child: Column(
+                  children: [
+                    PreferredSize(
+                      preferredSize: Size(MediaQuery.of(context).size.width*1, 60.h),
+                      child: const Material(
+                        color: ColorsConstant.black,
+                        child: TabBar(
+                          indicatorColor: ColorsConstant.white,
+                          labelColor: ColorsConstant.white,
+                          tabs: [
+                            Tab(text: 'Sign In',),
+                            Tab(text: 'Sign Up',),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  body: TabBarView(
-                    children: [
+                    Expanded(
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
 
-                      //-----------LOGIN SCREEN-----------
+                          //-----------LOGIN SCREEN-----------
 
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
+                          SingleChildScrollView(
+                            child: Column(
+                              children: [
 
-                             SizedBox(
-                              height: 35.h,
-                            ),
+                                SizedBox(
+                                  height: 55.h,
+                                ),
 
-                            const SocialIconsComponent(),
+                                const SocialIconsComponent(),
 
-                            SizedBox(height: 25.h),
+                                SizedBox(height: 37.h),
 
-                            const Text('Or continue with email', style: TextStyle(
-                              fontSize: 15,
-                              color: ColorsConstant.black
-                            ),),
+                                const Text('Or continue with email', style: TextStyle(
+                                    fontSize: 15,
+                                    color: ColorsConstant.black
+                                ),),
 
-                            SizedBox(height: 20.h),
+                                SizedBox(height: 24.h),
 
-                            Form(
-                              //key: _formKey,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                    width: 370.w,
-                                    child: TextFieldComponent(
-                                      _emailController,
-                                      keyboardType: TextInputType.emailAddress,
-                                      currentFocus: _emailFocus,
-                                      nextFocus: _passwordFocus,
-                                      hintText: "Email",
-                                      //validator: validateEmail,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 13.h,
-                                  ),
-
-                                  Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                    width: 370.w,
-                                    child: TextFieldComponent(_passwordController,
-                                        currentFocus: _passwordFocus,
-                                        keyboardType: TextInputType.text,
-                                        isPassword: true,
-                                        hintText: "Password",
-                                        hintTextStyle: GoogleFonts.poppins(),
-                                        //validator: validatePassword
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                Form(
+                                  //key: _formKey,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          //Get.toNamed('');
-                                          // Navigator.of(context)
-                                          //     .pushNamed(ForgotPasswordScreen.routeName);
-                                        },
-                                        child: InkWell(
-                                          onTap: (){
-                                            Get.toNamed('/forgot_password');
-                                          },
-                                          child: const Text(
-                                            "Forgot Password?",
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              color: ColorsConstant.black,
+                                      Container(
+                                        margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                        child: TextFieldComponent(
+                                          _signInEmailController,
+                                          keyboardType: TextInputType.emailAddress,
+                                          currentFocus: _emailFocus,
+                                          nextFocus: _signInPasswordFocus,
+                                          borderColor: ColorsConstant.black.withOpacity(0.3),
+                                          hintText: "Email",
+                                          maxLength: 35,
+                                          //validator: validateEmail,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 19.h,
+                                      ),
+
+                                      Container(
+                                        margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                        child: TextFieldComponent(_signInPasswordController,
+                                          currentFocus: _signInPasswordFocus,
+                                          keyboardType: TextInputType.text,
+                                          isPassword: true,
+                                          hintText: "Password",
+                                          borderColor: ColorsConstant.black.withOpacity(0.3),
+                                          hintTextStyle: GoogleFonts.poppins(),
+                                          maxLength: 24,
+                                          //validator: validatePassword
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Get.toNamed('/forgot_password');
+                                            },
+                                            child: const Text(
+                                              "Forgot Password?",
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                color: ColorsConstant.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 14.h,),
+
+                                      Container(
+                                        margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                        child: ButtonComponent(text: 'SIGN IN', onPressed: (){
+                                          Get.toNamed('/dashBoard');
+                                        }),
+                                      ),
+
+                                      SizedBox(
+                                        height: 37.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Text('Don\'t have an account? ', style: TextStyle(
+                                              color: ColorsConstant.black
+                                          ),),
+                                          TextButton(
+                                            onPressed: (){
+                                              switchToTab();
+                                            },
+                                            child: const Text('Signup', style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: ColorsConstant.black
+                                            ),),
+                                          )
+                                        ],
+                                      )
+
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //-----------SIGNUP SCREEN-----------
+
+                          SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 41.h),
+                                  child: Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                          width: 370.w,
+                                          child: TextFieldComponent(
+                                            _nameController,
+                                            keyboardType: TextInputType.name,
+                                            currentFocus: _nameFocus,
+                                            nextFocus: _preferredNameFocus,
+                                            //validator: validateName,
+                                            textCapitalization: TextCapitalization.words,
+                                            hintText: "Name",
+                                            hintTextStyle: TextStyle(
+                                              color: ColorsConstant.grey,
+                                              fontSize: 14.sp,
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: 19.h,
+                                        ),
+
+                                        Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                          width: 370.w,
+                                          child: TextFieldComponent(
+                                            _signUpEmailController,
+                                            keyboardType: TextInputType.emailAddress,
+                                            currentFocus: _emailFocus,
+                                            nextFocus: _signUpPasswordFocus,
+                                            //validator: validateEmail,
+                                            hintText: "Email",
+                                            hintTextStyle: TextStyle(
+                                              color: ColorsConstant.grey,
+                                              fontSize: 14.sp,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 19.h,
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                          width: 370.w,
+                                          child: TextFieldComponent(
+                                            _signUpPasswordController,
+                                            currentFocus: _signUpPasswordFocus,
+                                            nextFocus: _repasswordFocus,
+                                            keyboardType: TextInputType.text,
+                                            isPassword: true,
+                                            //validator: validatePassword,
+                                            hintText: "Password",
+                                            hintTextStyle: TextStyle(
+                                              color: ColorsConstant.grey,
+                                              fontSize: 14.sp,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 19.h,
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                          width: 370.w,
+                                          child: TextFieldComponent(
+                                            _repasswordController,
+                                            currentFocus: _repasswordFocus,
+                                            keyboardType: TextInputType.text,
+                                            isPassword: true,
+                                            // validator: (value) {
+                                            //   if (_passwordController.value ==
+                                            //       _repasswordController.value) {
+                                            //     return null;
+                                            //   } else {
+                                            //     return "Password does not match";
+                                            //   }
+                                            // },
+                                            hintText: "Re-enter Password",
+                                            hintTextStyle: TextStyle(
+                                              color: ColorsConstant.grey,
+                                              fontSize: 14.sp,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-
-                                  ButtonComponent(text: 'SIGN IN', onPressed: (){
-                                      Get.toNamed('/dashBoard');
-                                  }),
-
-                                  SizedBox(
-                                    height: 35.h,
-                                  ),
-
-                                 const Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text('Don\'t have an account?', style: TextStyle(
-                                        color: ColorsConstant.black
-                                      ),),
-                                      Text('Signup', style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorsConstant.black
-                                      ),)
-                                    ],
-                                  )
-
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      //-----------SIGNUP SCREEN-----------
-
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.symmetric(vertical: 18.h),
-                              child: Form(
-                                key: _formKey,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                      width: 370.w,
-                                      child: TextFieldComponent(
-                                        _nameController,
-                                        keyboardType: TextInputType.name,
-                                        currentFocus: _nameFocus,
-                                        nextFocus: _preferredNameFocus,
-                                        //validator: validateName,
-                                        textCapitalization: TextCapitalization.words,
-                                        hintText: "Name",
-                                        hintTextStyle: TextStyle(
-                                          color: ColorsConstant.grey,
-                                          fontSize: 14.sp,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                      width: 370.w,
-                                      child: TextFieldComponent(
-                                        _emailController,
-                                        keyboardType: TextInputType.emailAddress,
-                                        currentFocus: _emailFocus,
-                                        nextFocus: _passwordFocus,
-                                        //validator: validateEmail,
-                                        hintText: "Email",
-                                        hintTextStyle: TextStyle(
-                                          color: ColorsConstant.grey,
-                                          fontSize: 14.sp,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                      width: 370.w,
-                                      child: TextFieldComponent(
-                                        _passwordController,
-                                        currentFocus: _passwordFocus,
-                                        nextFocus: _repasswordFocus,
-                                        keyboardType: TextInputType.text,
-                                        isPassword: true,
-                                        //validator: validatePassword,
-                                        hintText: "Password",
-                                        hintTextStyle: TextStyle(
-                                          color: ColorsConstant.grey,
-                                          fontSize: 14.sp,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                      width: 370.w,
-                                      child: TextFieldComponent(
-                                        _repasswordController,
-                                        currentFocus: _repasswordFocus,
-                                        keyboardType: TextInputType.text,
-                                        isPassword: true,
-                                        // validator: (value) {
-                                        //   if (_passwordController.value ==
-                                        //       _repasswordController.value) {
-                                        //     return null;
-                                        //   } else {
-                                        //     return "Password does not match";
-                                        //   }
-                                        // },
-                                        hintText: "Re-enter Password",
-                                        hintTextStyle: TextStyle(
-                                          color: ColorsConstant.grey,
-                                          fontSize: 14.sp,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
-                              ),
+
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 27.h),
+                                  child: ButtonComponent(text: ('SIGN UP'), onPressed: (){
+
+                                  }),
+                                ),
+
+                                SizedBox(
+                                  height: 18.h,
+                                ),
+                                const Center(
+                                  child: Text('Or continue with', style: TextStyle(
+                                      color: ColorsConstant.black,
+                                      fontSize: 12
+                                  ),),
+                                ),
+
+                                SizedBox(
+                                  height: 37.h,
+                                ),
+
+                                const SocialIconsComponent()
+
+                              ],
                             ),
-                            
-                            ButtonComponent(text: ('SIGN UP'), onPressed: (){
+                          )
+                        ],
+                      ),
+                    )
 
-                            }),
-
-                            SizedBox(
-                              height: 18.h,
-                            ),
-                            const Center(
-                              child: Text('Or continue with', style: TextStyle(
-                                  color: ColorsConstant.black,
-                                  fontSize: 12
-                              ),),
-                            ),
-
-                            SizedBox(
-                              height: 18.h,
-                            ),
-
-                            const SocialIconsComponent()
-
-                          ],
-                        ),
-                      )
-                    ],
-                  )
-                ),
+                  ],
+                )
               ),
           ),
         ],

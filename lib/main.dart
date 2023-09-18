@@ -12,12 +12,16 @@ import 'package:zeg/view/screens/email_confirmation_screen.dart';
 import 'package:zeg/view/screens/faqs_screen.dart';
 import 'package:zeg/view/screens/forgot_password_screen.dart';
 import 'package:zeg/view/screens/loan_history_screen.dart';
+import 'package:zeg/view/screens/loan_request_screen.dart';
 import 'package:zeg/view/screens/login_signup_screen.dart';
+import 'package:zeg/view/screens/notification_screen.dart';
 import 'package:zeg/view/screens/payment_method_screen.dart';
+import 'package:zeg/view/screens/privacy_policy_screen.dart';
 import 'package:zeg/view/screens/profile_management_screen.dart';
 import 'package:zeg/view/screens/reset_password_screen.dart';
 import 'package:zeg/view/screens/safety_tips_screen.dart';
 import 'package:zeg/view/screens/swipe_up.dart';
+import 'package:zeg/view/screens/terms_conditions_screen.dart';
 
 
 void main(){
@@ -41,11 +45,11 @@ class ZegApp extends StatelessWidget {
               Theme.of(context).primaryTextTheme
             )
           ),
-          home: const SwipeUp(),
+          home: SwipeUp(),
 
           getPages: [
 
-            GetPage(name: '/', page: ()=> const SwipeUp()),
+            GetPage(name: '/', page: ()=> SwipeUp()),
             GetPage(name: '/loginScreen', page: ()=> LoginScreen()),
             GetPage(name: '/forgot_password', page: ()=> ForgotPassword()),
             GetPage(name: '/confirmation_code', page: ()=> EmailConfirmationScreen()),
@@ -53,14 +57,18 @@ class ZegApp extends StatelessWidget {
             GetPage(name: '/dashBoard', page: ()=> const DashBoardScreen()),
             GetPage(name: '/accountScreen', page: ()=> const AccountScreen()),
             GetPage(name: '/safetyTipsScreen', page:()=>const  SafetyTipScreen()),
-            GetPage(name: '/profileManagementScreen', page: ()=> const ProfileManagementScreen()),
-            GetPage(name: '/editProfileScreen', page: ()=> const EditProfileScreen()),
+            GetPage(name: '/profileManagementScreen', page: ()=> ProfileManagementScreen()),
+            GetPage(name: '/editProfileScreen', page: ()=> EditProfileScreen()),
             GetPage(name: '/paymentMethod', page: ()=> const PaymentMethodScreen()),
             GetPage(name: '/addCardScreen', page: ()=> const AddCardScreen()),
             GetPage(name: '/beLenderScreen', page: ()=> BeLenderScreen()),
             GetPage(name: '/loanHistoryScreen', page: ()=> const LoanHistoryScreen()),
             GetPage(name: '/faqsScreen', page: ()=> const FaqsScreen()),
-            GetPage(name: '/contactUs', page: ()=> ContactUsScreen())
+            GetPage(name: '/contactUs', page: ()=> ContactUsScreen()),
+            GetPage(name: '/termsConditionScreen', page: ()=> const TermsConditionsScreen()),
+            GetPage(name: '/privacyPolicyScreen', page: ()=> const PrivacyPolicyScreen()),
+            GetPage(name: '/loanRequestScreen', page: ()=> const LoanRequestScreen()),
+            GetPage(name: '/notificationScreen', page:  ()=> const NotificationScreen()),
 
           ],
         );

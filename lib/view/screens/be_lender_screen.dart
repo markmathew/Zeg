@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -102,7 +104,7 @@ class BeLenderScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
-                    icon: const Icon(Icons.remove_circle_outline,color: ColorsConstant.white,),
+                    icon: const Icon(Icons.remove_circle_outline,color: ColorsConstant.white,size: 16,),
                     onPressed: () {
                       // Subtract logic
                       int currentValue = int.parse(interestRateController.text);
@@ -113,21 +115,25 @@ class BeLenderScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 65,
                     height: 15.h,
                     // Adjust the width to your liking
-                    child: TextFormField(
-                      style: TextStyle(color: ColorsConstant.neonGreen, fontSize: 20.sp),
-                      controller: interestRateController,
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 24.h),
+                      child: TextFormField(
+                        style: TextStyle(color: ColorsConstant.neonGreen, fontSize: 20.sp),
+                        controller: interestRateController,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                         // border: OutlineInputBorder(),
+                          border: InputBorder.none
+                        ),
                       ),
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.add_circle_outline, color: ColorsConstant.white,),
+                    icon: const Icon(Icons.add_circle_outline, color: ColorsConstant.white,size: 16,),
                     onPressed: () {
                       // Add logic
                       int currentValue = int.parse(interestRateController.text);
@@ -176,11 +182,14 @@ class BeLenderScreen extends StatelessWidget {
             ),
             SizedBox(height: 38.h,),
             //const WhiteBtnComponent(btnTitle: 'SAVE')
-            WhiteBtnComponent(btnTitle: 'SAVE', onPressed: (){
-              PopUpComponent.showPopUp(context, 'CONGRATS\nYou are lender too now');
-              Future.delayed(const Duration(seconds: 3), (){
-                Get.offNamed('/accountScreen');
-              });
+            WhiteBtnComponent(
+              btnRadius: 12.r,
+                btnTitle: 'SAVE',
+                onPressed: (){
+                  PopUpComponent.showPopUp(context, 'CONGRATS', 'You are lender too now');
+                  Future.delayed(const Duration(seconds: 3), (){
+                    Get.offNamed('/accountScreen');
+                });
             })
           ],
         ),

@@ -187,9 +187,9 @@ class _TextFieldComponentState extends State<TextFieldComponent> {
         suffixIcon: widget.isPassword
             ? GestureDetector(
           child: _hidePassword
-              ? const Icon(
+              ? Icon(
             Icons.visibility_off,
-            color: ColorsConstant.grey,
+            color: ColorsConstant.black.withOpacity(0.3),
           )
               : const Icon(
             Icons.visibility,

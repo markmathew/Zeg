@@ -39,7 +39,8 @@ class ButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 48,
-      margin: EdgeInsets.symmetric(horizontal: 25.h),
+      width: 370.w,
+      //margin: EdgeInsets.symmetric(horizontal: 25.h),
       decoration: BoxDecoration(
         border: border,
         boxShadow: boxShadow != null ? [boxShadow!] : null,
